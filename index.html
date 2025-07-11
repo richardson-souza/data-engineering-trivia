@@ -19,7 +19,6 @@
                 <h2>Ready to test your Data Engineering knowledge?</h2>
                 <p>Challenge yourself with questions covering core GCP topics.</p>
                 
-                <!-- Timer Toggle Switch -->
                 <div class="settings-container">
                     <div class="timer-toggle">
                         <label for="timerToggle" class="toggle-label">Enable Timer</label>
@@ -49,7 +48,6 @@
                     <div class="score-number" id="currentScore">0</div>
                     <div class="score-label">Score</div>
                 </div>
-                <!-- Timer Display - Initially Hidden -->
                 <div class="score-item hidden" id="timerContainer">
                     <div class="score-number" id="timer">15</div>
                     <div class="score-label">Time Left</div>
@@ -61,7 +59,11 @@
             </div>
 
             <div class="question-card">
-                <div class="question-number" id="questionNumber">Question 1 of 11</div>
+                <!-- Question Header for Number and Icon -->
+                <div class="question-header">
+                    <div class="question-number" id="questionNumber">Question 1 of 11</div>
+                    <div id="verification-icon-container"></div>
+                </div>
                 <div class="question-text" id="questionText"></div>
                 <div class="answers-grid" id="answersGrid"></div>
                 <div class="explanation" id="explanation">
