@@ -11,6 +11,21 @@ let timeLeft = TIME_LIMIT;
 let timerInterval;
 let isTimerEnabled = false;
 
+// SVG Icons for verification status
+const verifiedIconSVG = `
+    <svg class="icon" title="Verified Question" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#34a853" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+    </svg>`;
+
+const notVerifiedIconSVG = `
+    <svg class="icon" title="Not Verified" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ea4335" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        <line x1="12" y1="8" x2="12" y2="12"></line>
+        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+    </svg>`;
+
+
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -35,7 +50,8 @@ async function loadQuestions() {
               "question": "This is a fallback question. Where is the 'questions.json' file?",
               "answers": ["In the same folder as index.html", "In the 'js' folder", "In the 'css' folder", "It's not needed"],
               "correct": 0,
-              "explanation": "The 'questions.json' file should be in the same directory as the 'index.html' file to be loaded correctly by the fetch API."
+              "explanation": "The 'questions.json' file should be in the same directory as the 'index.html' file to be loaded correctly by the fetch API.",
+              "verified": true
             }
         ];
         return false;
@@ -55,7 +71,6 @@ async function startGame() {
         timerContainer.classList.add('hidden');
     }
 
-    // Reset progress bar for a new game
     updateProgressBar(); 
     
     await loadQuestions();
@@ -79,6 +94,14 @@ function loadQuestion() {
     document.getElementById('questionText').textContent = question.question;
     document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
     
+    // Set the verification icon based on the 'verified' key
+    const iconContainer = document.getElementById('verification-icon-container');
+    if (question.verified === true) {
+        iconContainer.innerHTML = verifiedIconSVG;
+    } else {
+        iconContainer.innerHTML = notVerifiedIconSVG;
+    }
+
     const answersGrid = document.getElementById('answersGrid');
     answersGrid.innerHTML = '';
     
@@ -107,7 +130,7 @@ function updateTimer() {
             selectAnswer(-1); // Time's up!
         }
     } else {
-        clearInterval(timerInterval); // Stop timer if element is missing
+        clearInterval(timerInterval);
     }
 }
 
@@ -150,7 +173,6 @@ function selectAnswer(selectedIndex) {
     
     answeredQuestions++;
     updateScore();
-    // Update progress bar AFTER answering
     updateProgressBar(); 
 
     document.getElementById('nextBtn').classList.add('show');
