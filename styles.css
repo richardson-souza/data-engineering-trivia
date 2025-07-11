@@ -64,6 +64,88 @@ body {
     text-align: center;
 }
 
+.settings-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px 0;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+}
+
+.timer-toggle {
+    display: flex;
+    align-items: center;
+}
+
+.toggle-label {
+    margin-right: 15px;
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+}
+
+/* The switch - a box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #4285f4;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #4285f4;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+
 .start-btn {
     background: linear-gradient(135deg, #4285f4, #34a853);
     color: white;
@@ -99,7 +181,8 @@ body {
 
 .score-board {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: flex-start;
     margin-bottom: 30px;
     padding: 15px;
     background: #f8f9fa;
@@ -114,6 +197,12 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
     color: #333;
+    transition: color 0.3s ease;
+}
+
+.timer-urgent {
+    color: #dc3545;
+    font-weight: bold;
 }
 
 .score-label {
@@ -228,28 +317,6 @@ body {
     line-height: 1.4;
 }
 
-.explanation-text ul {
-    margin: 10px 0;
-    padding-left: 20px;
-}
-
-.explanation-text li {
-    margin: 5px 0;
-}
-
-.explanation-text a {
-    color: #4285f4;
-    text-decoration: none;
-}
-
-.explanation-text a:hover {
-    text-decoration: underline;
-}
-
-.explanation-text strong {
-    color: #333;
-}
-
 .results-screen {
     text-align: center;
 }
@@ -294,6 +361,10 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+.hidden {
+    display: none !important;
+}
+
 @media (max-width: 600px) {
     .container {
         padding: 20px;
@@ -305,5 +376,14 @@ body {
     
     .answers-grid {
         grid-template-columns: 1fr;
+    }
+
+    .score-board {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .score-item {
+        flex-basis: 40%;
     }
 }

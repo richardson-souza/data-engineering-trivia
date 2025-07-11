@@ -5,6 +5,12 @@ let streak = 0;
 let maxStreak = 0;
 let answeredQuestions = 0;
 
+// Timer variables
+const TIME_LIMIT = 15; // Time per question in seconds
+let timeLeft = TIME_LIMIT;
+let timerInterval;
+let isTimerEnabled = false;
+
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -12,7 +18,6 @@ function shuffleArray(array) {
     }
 }
 
-// Load questions from JSON file
 async function loadQuestions() {
     try {
         const response = await fetch('questions.json');
@@ -25,31 +30,50 @@ async function loadQuestions() {
         return true;
     } catch (error) {
         console.error('Error loading questions:', error);
+        questions = [
+            {
+              "question": "This is a fallback question. Where is the 'questions.json' file?",
+              "answers": ["In the same folder as index.html", "In the 'js' folder", "In the 'css' folder", "It's not needed"],
+              "correct": 0,
+              "explanation": "The 'questions.json' file should be in the same directory as the 'index.html' file to be loaded correctly by the fetch API."
+            }
+        ];
         return false;
     }
 }
 
 async function startGame() {
-    // Show loading message
-    document.getElementById('startScreen').innerHTML = '<div class="start-screen"><h2>Loading questions...</h2></div>';
+    isTimerEnabled = document.getElementById('timerToggle').checked;
     
-    // Load questions
-    const loaded = await loadQuestions();
-    if (!loaded) {
-        document.getElementById('startScreen').innerHTML = '<div class="start-screen"><h2>⚠️ Could not load questions.json</h2><p>Using fallback questions instead.</p><button class="start-btn" onclick="continueGame()">Continue with Basic Questions</button></div>';
-        return;
-    }
-    
-    continueGame();
-}
-
-function continueGame() {
     document.getElementById('startScreen').classList.remove('active');
     document.getElementById('gameScreen').classList.add('active');
+
+    const timerContainer = document.getElementById('timerContainer');
+    if (isTimerEnabled) {
+        timerContainer.classList.remove('hidden');
+    } else {
+        timerContainer.classList.add('hidden');
+    }
+
+    // Reset progress bar for a new game
+    updateProgressBar(); 
+    
+    await loadQuestions();
     loadQuestion();
 }
 
 function loadQuestion() {
+    if (isTimerEnabled) {
+        clearInterval(timerInterval);
+        timeLeft = TIME_LIMIT;
+        const timerElement = document.getElementById('timer');
+        if (timerElement) {
+            timerElement.textContent = timeLeft;
+            timerElement.classList.remove('timer-urgent');
+        }
+        timerInterval = setInterval(updateTimer, 1000);
+    }
+
     const question = questions[currentQuestionIndex];
     document.getElementById('questionNumber').textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
     document.getElementById('questionText').textContent = question.question;
@@ -67,42 +91,56 @@ function loadQuestion() {
         answersGrid.appendChild(button);
     });
     
-    // Hide explanation and next button for new question
     document.getElementById('explanation').classList.remove('show');
     document.getElementById('nextBtn').classList.remove('show');
-    updateProgressBar();
+}
+
+function updateTimer() {
+    timeLeft--;
+    const timerElement = document.getElementById('timer');
+    if (timerElement) {
+        timerElement.textContent = timeLeft;
+        if (timeLeft <= 5) {
+            timerElement.classList.add('timer-urgent');
+        }
+        if (timeLeft <= 0) {
+            selectAnswer(-1); // Time's up!
+        }
+    } else {
+        clearInterval(timerInterval); // Stop timer if element is missing
+    }
 }
 
 function selectAnswer(selectedIndex) {
+    if (isTimerEnabled) {
+        clearInterval(timerInterval);
+    }
+
     const question = questions[currentQuestionIndex];
     const buttons = document.querySelectorAll('.answer-btn');
-    
-    // Loop through all buttons to disable them and apply styling
+    const isCorrect = selectedIndex === question.correct;
+
     buttons.forEach((btn, index) => {
-        // Programmatically disable the button to prevent further clicks
         btn.disabled = true;
-        
-        // Add styling to show the button is disabled
         btn.classList.add('disabled'); 
         
-        // Highlight the correct answer in green
         if (index === question.correct) {
             btn.classList.add('correct');
         } 
-        // If the user's choice was incorrect, highlight it in red
         else if (index === selectedIndex) {
             btn.classList.add('incorrect');
         }
     });
     
-    // Show explanation only for wrong answers
-    if (selectedIndex !== question.correct) {
-        document.getElementById('explanationText').innerHTML = question.explanation;
+    if (!isCorrect) {
+        const explanationText = selectedIndex === -1 
+            ? `<p class="timer-urgent">Time's up!</p>${question.explanation}` 
+            : question.explanation;
+        document.getElementById('explanationText').innerHTML = explanationText;
         document.getElementById('explanation').classList.add('show');
     }
     
-    // Update score based on the correct answer
-    if (selectedIndex === question.correct) {
+    if (isCorrect) {
         score += 10;
         streak++;
         if (streak > maxStreak) maxStreak = streak;
@@ -112,8 +150,9 @@ function selectAnswer(selectedIndex) {
     
     answeredQuestions++;
     updateScore();
+    // Update progress bar AFTER answering
+    updateProgressBar(); 
 
-    // Show the button to advance to the next question
     document.getElementById('nextBtn').classList.add('show');
 }
 
@@ -132,7 +171,7 @@ function updateScore() {
 }
 
 function updateProgressBar() {
-    const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+    const progress = questions.length > 0 ? (answeredQuestions / questions.length) * 100 : 0;
     document.getElementById('progressBar').style.width = progress + '%';
 }
 
@@ -140,7 +179,7 @@ function showResults() {
     document.getElementById('gameScreen').classList.remove('active');
     document.getElementById('resultsScreen').classList.add('active');
     
-    const percentage = (score / (questions.length * 10)) * 100;
+    const percentage = questions.length > 0 ? (score / (questions.length * 10)) * 100 : 0;
     document.getElementById('finalScore').textContent = `${score}/${questions.length * 10}`;
     
     let message, messageClass;
@@ -166,9 +205,12 @@ function restartGame() {
     streak = 0;
     maxStreak = 0;
     answeredQuestions = 0;
+    isTimerEnabled = false;
+    clearInterval(timerInterval);
     
     document.getElementById('resultsScreen').classList.remove('active');
     document.getElementById('startScreen').classList.add('active');
+    document.getElementById('timerContainer').classList.add('hidden');
     
     updateScore();
 }
