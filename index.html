@@ -13,21 +13,28 @@
             <p class="subtitle">Master your Google Data Engineering exam with interactive practice!</p>
         </div>
 
+        <!-- Start Screen -->
         <div class="game-screen active" id="startScreen">
             <div class="start-screen">
                 <h2>Ready to test your Data Engineering knowledge?</h2>
-                <p>Challenge yourself with questions covering:</p>
-                <ul style="text-align: left; margin: 20px 0; display: inline-block;">
-                    <li>Google Cloud Platform services</li>
-                    <li>Data pipelines and ETL processes</li>
-                    <li>BigQuery and data warehousing</li>
-                    <li>Streaming data processing</li>
-                    <li>Data security and governance</li>
-                </ul>
+                <p>Challenge yourself with questions covering core GCP topics.</p>
+                
+                <!-- Timer Toggle Switch -->
+                <div class="settings-container">
+                    <div class="timer-toggle">
+                        <label for="timerToggle" class="toggle-label">Enable Timer</label>
+                        <label class="switch">
+                            <input type="checkbox" id="timerToggle">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+
                 <button class="start-btn" onclick="startGame()">Start Quiz 🚀</button>
             </div>
         </div>
 
+        <!-- Game Screen -->
         <div class="game-screen" id="gameScreen">
             <div class="progress-bar">
                 <div class="progress-fill" id="progressBar"></div>
@@ -41,6 +48,11 @@
                 <div class="score-item">
                     <div class="score-number" id="currentScore">0</div>
                     <div class="score-label">Score</div>
+                </div>
+                <!-- Timer Display - Initially Hidden -->
+                <div class="score-item hidden" id="timerContainer">
+                    <div class="score-number" id="timer">15</div>
+                    <div class="score-label">Time Left</div>
                 </div>
                 <div class="score-item">
                     <div class="score-number" id="streak">0</div>
@@ -62,6 +74,7 @@
             </div>
         </div>
 
+        <!-- Results Screen -->
         <div class="game-screen" id="resultsScreen">
             <div class="results-screen">
                 <h2 class="results-title">Quiz Complete! 🎉</h2>
