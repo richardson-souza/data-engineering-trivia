@@ -227,9 +227,66 @@
             "correct": 3,
             "explanation": "<strong>Answer: D - Transform</strong><br><br><strong>✅ Why this is correct:</strong><ul><li>The <strong>Transform</strong> stage is where data is adjusted, joined, filtered, or otherwise modified to meet the needs of downstream systems such as reporting tools, dashboards, or machine learning models.</li><li>This step tailors the raw or ingested data into a usable and meaningful format.</li></ul><br><strong>❌ Why the other options are incorrect:</strong><ul><li><strong>A - Replicate and migrate:</strong> Focuses on copying and moving data into Google Cloud, not preparing it for analysis.</li><li><strong>B - Store:</strong> Refers to where the data lands after it's been transformed or ingested, not the act of transformation itself.</li><li><strong>C - Ingest:</strong> Simply brings raw data into the pipeline; it does not alter or process it.</li></ul><br><strong>📚 Reference:</strong><br>• <a href=\"https://cloud.google.com/architecture/data-pipeline-design-patterns\" target=\"_blank\">Data Pipeline Design Patterns – Google Cloud</a>",
             "verified": true
+        },
+        {
+            "question": "Which of the following services efficiently moves large datasets from on-premises, multicloud file systems, object stores, and HDFS into Cloud Storage and supports scheduled transfers?",
+            "answers": [
+            "Storage Transfer Service",
+            "Vertex AI",
+            "gcloud storage",
+            "Transfer Appliance"
+            ],
+            "correct": 0,
+            "explanation": "Storage Transfer Service is designed for large-scale, scheduled migrations from on-premises and cloud sources. It's a managed service optimized for automated transfers. Vertex AI is for machine learning, not data transfer. gcloud storage is a CLI for manual transfers. Transfer Appliance is a hardware device for offline migrations, not for scheduled cloud-based transfers.",
+            "verified": true
+        },
+        {
+            "question": "In Datastream event messages, which section contains the actual data changes in a key-value format?",
+            "answers": [
+            "Change log",
+            "Payload",
+            "Source-specific metadata",
+            "Generic metadata"
+            ],
+            "correct": 1,
+            "explanation": "The payload section in Datastream event messages holds the actual data changes in a key-value format. 'Change log' is a general term. Source-specific metadata holds origin-related metadata. Generic metadata holds context info like operation type.",
+            "verified": true
+        },
+        {
+            "question": "Which of the following tools is best suited for migrating very large datasets offline?",
+            "answers": [
+            "gcloud storage command",
+            "Transfer Appliance",
+            "Datastream",
+            "Storage Transfer Service"
+            ],
+            "correct": 1,
+            "explanation": "Transfer Appliance is a physical device designed for securely transferring very large datasets offline to Google Cloud. The other options are for online or streaming transfers.",
+            "verified": true
+        },
+        {
+            "question": "The ease of migrating data is heavily influenced by which two factors?",
+            "answers": [
+            "Data size and network bandwidth",
+            "Data source and destination platform",
+            "Data complexity and network latency",
+            "Data format and storage type"
+            ],
+            "correct": 0,
+            "explanation": "Data size and network bandwidth are the two primary factors that impact the speed and difficulty of data migration. While tools and formats matter, physical limits like size and throughput dominate migration feasibility.",
+            "verified": true
+        },
+        {
+            "question": "Which tool or service uses the “cp” command to facilitate ad-hoc transfers directly to Cloud Storage from various on-premise sources?",
+            "answers": [
+            "Storage Transfer Service",
+            "gcloud storage command",
+            "Transfer Appliance",
+            "Datastream"
+            ],
+            "correct": 1,
+            "explanation": "The gcloud storage CLI supports ad-hoc file transfers using commands like 'gcloud storage cp'. It is suitable for quick, manual tasks. The others are managed services or hardware-based tools not intended for ad-hoc CLI-based transfers.",
+            "verified": true
         }
-
-
-
     ]
 }
