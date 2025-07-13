@@ -162,6 +162,74 @@
             "correct": 2,
             "explanation": "<strong>Answer: C - Create streams in Datastream to replicate the required tables from both Cloud SQL databases to BigQuery.</strong><br><br><strong>✅ Why this is correct:</strong><ul><li><strong>Protects Cloud SQL:</strong> Avoids high-frequency direct querying that would strain the Cloud SQL production databases.</li><li><strong>Scalable and Real-time:</strong> <a href='https://cloud.google.com/datastream' target='_blank'>Datastream</a> uses <strong>CDC</strong> (Change Data Capture) to stream updates in near real-time to BigQuery, keeping data current and enabling responsive campaigns.</li><li><strong>Fast Queries:</strong> BigQuery is optimized for analytic workloads, offering high performance for complex joins and aggregations at scale.</li></ul><br><strong>❌ Why the other options are incorrect:</strong><ul><li><strong>A - Federated Queries:</strong> Still place live query load on Cloud SQL; not optimal for high query frequency.</li><li><strong>B - Dataproc with Spark:</strong> Adds architectural and operational complexity with no significant benefit for this use case.</li><li><strong>D - Dataproc with Trino:</strong> Overhead of managing a cluster and federated setup is unnecessary when Datastream offers a managed path.</li></ul><br><strong>📌 Summary:</strong> <strong>Datastream → BigQuery</strong> is the cleanest, lowest-maintenance, and most performant solution for joining behavioral and profile data across systems at scale.<br><br><strong>📚 References:</strong><br>• <a href='https://cloud.google.com/datastream/docs' target='_blank'>Datastream Documentation</a><br>• <a href='https://cloud.google.com/bigquery/docs' target='_blank'>BigQuery Documentation</a><br>• <a href='https://en.wikipedia.org/wiki/Change_data_capture' target='_blank'>Change Data Capture (CDC)</a>",
             "verified": true
+        },
+        {
+            "question": "Which Google Cloud product is best suited for storing unstructured data like images and videos?",
+            "category": ["Cloud Storage"],
+            "answers": [
+                "Cloud Storage",
+                "Cloud SQL",
+                "Bigtable",
+                "BigQuery"
+            ],
+            "correct": 0,
+            "explanation": "<strong>Answer: A - Cloud Storage</strong><br><br><strong>✅ Why this is correct:</strong><ul><li><strong>Cloud Storage</strong> is explicitly designed for storing <em>unstructured data</em> such as images, videos, documents, and backups.</li><li>It is a scalable, durable, and cost-effective object storage system ideal for binary data and large file blobs.</li></ul><br><strong>❌ Why the other options are incorrect:</strong><ul><li><strong>Cloud SQL:</strong> A managed relational database for structured transactional workloads (e.g., MySQL, PostgreSQL, SQL Server). Not suitable for storing media files.</li><li><strong>Bigtable:</strong> A high-throughput NoSQL database built for time-series and analytical workloads. It’s used for structured, wide-column data, not unstructured content.</li><li><strong>BigQuery:</strong> A data warehouse optimized for querying structured and semi-structured datasets. It is not designed for storing binary files or media assets.</li></ul><br><strong>📚 Reference:</strong><br>• <a href=\"https://cloud.google.com/storage\" target=\"_blank\">Google Cloud Storage Overview</a><br>• <a href=\"https://cloud.google.com/docs/overview\" target=\"_blank\">Google Cloud Product Overview</a>",
+            "verified": true
+        },
+        {
+            "question": "What is the purpose of Analytics Hub in Google Cloud?",
+            "category": "Google Cloud Platform - Data Sharing",
+            "answers": [
+                "To perform complex machine learning tasks on large datasets.",
+                "To automate the process of data cleaning and transformation.",
+                "To provide a centralized platform for data visualization.",
+                "To enable secure and controlled data sharing within and outside an organization."
+            ],
+            "correct": 3,
+            "explanation": "<strong>Answer: D - To enable secure and controlled data sharing within and outside an organization.</strong><br><br><strong>✅ Why this is correct:</strong><ul><li>Analytics Hub allows organizations to <em>securely publish and subscribe</em> to BigQuery datasets.</li><li>It enables <em>in-place data sharing</em> (no need to copy datasets), giving providers fine-grained control over data usage and access.</li><li>This model promotes reuse, governance, and reduces storage redundancy.</li></ul><br><strong>❌ Why the other options are incorrect:</strong><ul><li><strong>A - Machine learning tasks:</strong> This is the domain of BigQuery ML or Vertex AI, not Analytics Hub.</li><li><strong>B - Data cleaning and transformation:</strong> That is best handled by Dataflow, Dataproc, or Dataform, which are designed for ETL/ELT operations.</li><li><strong>C - Data visualization:</strong> Analytics Hub does not provide visualization capabilities; tools like Looker Studio, Tableau, or Power BI integrate with BigQuery for that purpose.</li></ul><br><strong>📚 Reference:</strong><br>• <a href=\"https://cloud.google.com/bigquery/docs/analytics-hub-introduction\" target=\"_blank\">Google Cloud Analytics Hub Overview</a>",
+            "verified": true
+        },
+        {
+            "question": "What is the primary function of a data engineer?",
+            "category": ["Data Engineering"],
+            "answers": [
+                "Managing network security for data systems.",
+                "Conducting statistical analysis on data.",
+                "Building and maintaining data pipelines.",
+                "Designing user interfaces for data visualization."
+            ],
+            "correct": 2,
+            "explanation": "<strong>Answer: C - Building and maintaining data pipelines</strong><br><br><strong>✅ Why this is correct:</strong><ul><li>Data engineers are responsible for designing, building, and maintaining the infrastructure that allows for efficient data collection, transformation, and storage.</li><li>They enable downstream use cases such as analytics, reporting, and machine learning by ensuring clean, reliable, and timely data flow.</li></ul><br><strong>❌ Why the other options are incorrect:</strong><ul><li><strong>A - Managing network security:</strong> This is the role of network or security engineers. Data engineers focus on the data layer, not network infrastructure.</li><li><strong>B - Conducting statistical analysis:</strong> This is a task for data analysts or data scientists who consume the data prepared by data engineers.</li><li><strong>D - Designing user interfaces:</strong> This falls under the domain of UI/UX designers and frontend developers, not data engineers.</li></ul><br><strong>📚 Reference:</strong><br>• <a href=\"https://cloud.google.com/certification/data-engineer\" target=\"_blank\">Google Cloud Certified Professional Data Engineer</a>",
+            "verified": true
+        },
+        {
+            "question": "What is the key difference between a data lake and a data warehouse?",
+            "category": ["Data Architecture", "Data lake", "Data warehouse"],
+            "answers": [
+                "Data lakes are used for real-time analytics, while data warehouses are used for long-term storage.",
+                "Data lakes store only structured data, while data warehouses store unstructured data.",
+                "Data lakes store raw, unprocessed data, while data warehouses store processed and organized data.",
+                "Data lakes are managed by data scientists, while data warehouses are managed by data engineers."
+            ],
+            "correct": 2,
+            "explanation": "<strong>Answer: C - Data lakes store raw, unprocessed data, while data warehouses store processed and organized data.</strong><br><br><strong>✅ Why this is correct:</strong><ul><li>Data lakes serve as repositories for data in its original form—structured, semi-structured, or unstructured.</li><li>They are designed to support a wide range of workloads, such as data science, machine learning, and exploratory analytics.</li><li>Data warehouses, in contrast, store data that has already been cleaned, transformed, and optimized for analytical queries and reporting.</li></ul><br><strong>❌ Why the other options are incorrect:</strong><ul><li><strong>A:</strong> Data lakes are not limited to real-time analytics and can be used for long-term data storage as well. Data warehouses are typically used for batch analytics and historical reporting.</li><li><strong>B:</strong> This is reversed. Data lakes store structured, semi-structured, and unstructured data. Data warehouses focus primarily on structured data.</li><li><strong>D:</strong> There is no strict role demarcation—data engineers typically manage both environments, and data scientists consume data from both depending on their needs.</li></ul><br><strong>📚 Reference:</strong><br>• <a href=\"https://cloud.google.com/architecture/data-lake-vs-data-warehouse\" target=\"_blank\">Google Cloud: Data Lake vs Data Warehouse</a>",
+            "verified": true
+        },
+        {
+            "question": "Which stage in a data pipeline involves modifying and preparing data for specific downstream requirements?",
+            "category": ["Data Pipelines"],
+            "answers": [
+                "Replicate and migrate",
+                "Store",
+                "Ingest",
+                "Transform"
+            ],
+            "correct": 3,
+            "explanation": "<strong>Answer: D - Transform</strong><br><br><strong>✅ Why this is correct:</strong><ul><li>The <strong>Transform</strong> stage is where data is adjusted, joined, filtered, or otherwise modified to meet the needs of downstream systems such as reporting tools, dashboards, or machine learning models.</li><li>This step tailors the raw or ingested data into a usable and meaningful format.</li></ul><br><strong>❌ Why the other options are incorrect:</strong><ul><li><strong>A - Replicate and migrate:</strong> Focuses on copying and moving data into Google Cloud, not preparing it for analysis.</li><li><strong>B - Store:</strong> Refers to where the data lands after it's been transformed or ingested, not the act of transformation itself.</li><li><strong>C - Ingest:</strong> Simply brings raw data into the pipeline; it does not alter or process it.</li></ul><br><strong>📚 Reference:</strong><br>• <a href=\"https://cloud.google.com/architecture/data-pipeline-design-patterns\" target=\"_blank\">Data Pipeline Design Patterns – Google Cloud</a>",
+            "verified": true
         }
+
+
+
     ]
 }
