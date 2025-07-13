@@ -5,13 +5,12 @@ let streak = 0;
 let maxStreak = 0;
 let answeredQuestions = 0;
 
-// Timer variables
-const TIME_LIMIT = 15; // Time per question in seconds
+
+const TIME_LIMIT = 15;
 let timeLeft = TIME_LIMIT;
 let timerInterval;
 let isTimerEnabled = false;
 
-// SVG Icons for verification status
 const verifiedIconSVG = `
     <svg class="icon" title="Verified Question" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#34a853" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
@@ -23,6 +22,15 @@ const notVerifiedIconSVG = `
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
         <line x1="12" y1="8" x2="12" y2="12"></line>
         <line x1="12" y1="16" x2="12.01" y2="16"></line>
+    </svg>`;
+
+const aiIconSVG = `
+    <svg class="icon" title="AI generated or suggested" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="7" width="16" height="10" rx="2" ry="2" />
+        <circle cx="9" cy="12" r="1" />
+        <circle cx="15" cy="12" r="1" />
+        <line x1="12" y1="2" x2="12" y2="7" />
+        <line x1="8" y1="2" x2="16" y2="2" />
     </svg>`;
 
 
@@ -47,11 +55,11 @@ async function loadQuestions() {
         console.error('Error loading questions:', error);
         questions = [
             {
-              "question": "This is a fallback question. Where is the 'questions.json' file?",
-              "answers": ["In the same folder as index.html", "In the 'js' folder", "In the 'css' folder", "It's not needed"],
-              "correct": 0,
-              "explanation": "The 'questions.json' file should be in the same directory as the 'index.html' file to be loaded correctly by the fetch API.",
-              "verified": true
+                "question": "This is a fallback question. Where is the 'questions.json' file?",
+                "answers": ["In the same folder as index.html", "In the 'js' folder", "In the 'css' folder", "It's not needed"],
+                "correct": 0,
+                "explanation": "The 'questions.json' file should be in the same directory as the 'index.html' file to be loaded correctly by the fetch API.",
+                "verified": true
             }
         ];
         return false;
@@ -60,7 +68,7 @@ async function loadQuestions() {
 
 async function startGame() {
     isTimerEnabled = document.getElementById('timerToggle').checked;
-    
+
     document.getElementById('startScreen').classList.remove('active');
     document.getElementById('gameScreen').classList.add('active');
 
@@ -71,8 +79,8 @@ async function startGame() {
         timerContainer.classList.add('hidden');
     }
 
-    updateProgressBar(); 
-    
+    updateProgressBar();
+
     await loadQuestions();
     loadQuestion();
 }
@@ -93,18 +101,31 @@ function loadQuestion() {
     document.getElementById('questionNumber').textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
     document.getElementById('questionText').textContent = question.question;
     document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
-    
-    // Set the verification icon
+
     const iconContainer = document.getElementById('verification-icon-container');
+    iconContainer.innerHTML = '';
     if (question.verified === true) {
-        iconContainer.innerHTML = verifiedIconSVG;
+        iconContainer.innerHTML += `
+            <span title="Verified. Trusted source.">
+                ${verifiedIconSVG}
+            </span>`;
     } else {
-        iconContainer.innerHTML = notVerifiedIconSVG;
+        iconContainer.innerHTML += `
+            <span title="Not verified. Help the community by contributing!">
+                ${notVerifiedIconSVG}
+            </span>`;
+    }
+
+    if (question.ai_generated === true) {
+        iconContainer.innerHTML += `
+            <span title="AI generated or suggested">
+                ${aiIconSVG}
+            </span>`;
     }
 
     const answersGrid = document.getElementById('answersGrid');
     answersGrid.innerHTML = '';
-    
+
     question.answers.forEach((answer, index) => {
         const button = document.createElement('button');
         button.className = 'answer-btn';
@@ -113,7 +134,7 @@ function loadQuestion() {
         button.onclick = () => selectAnswer(index);
         answersGrid.appendChild(button);
     });
-    
+
     document.getElementById('explanation').classList.remove('show');
     document.getElementById('nextBtn').classList.remove('show');
 }
@@ -145,24 +166,24 @@ function selectAnswer(selectedIndex) {
 
     buttons.forEach((btn, index) => {
         btn.disabled = true;
-        btn.classList.add('disabled'); 
-        
+        btn.classList.add('disabled');
+
         if (index === question.correct) {
             btn.classList.add('correct');
-        } 
+        }
         else if (index === selectedIndex) {
             btn.classList.add('incorrect');
         }
     });
-    
+
     if (!isCorrect) {
-        const explanationText = selectedIndex === -1 
-            ? `<p class="timer-urgent">Time's up!</p>${question.explanation}` 
+        const explanationText = selectedIndex === -1
+            ? `<p class="timer-urgent">Time's up!</p>${question.explanation}`
             : question.explanation;
         document.getElementById('explanationText').innerHTML = explanationText;
         document.getElementById('explanation').classList.add('show');
     }
-    
+
     if (isCorrect) {
         score += 10;
         streak++;
@@ -170,10 +191,10 @@ function selectAnswer(selectedIndex) {
     } else {
         streak = 0;
     }
-    
+
     answeredQuestions++;
     updateScore();
-    updateProgressBar(); 
+    updateProgressBar();
 
     document.getElementById('nextBtn').classList.add('show');
 }
@@ -200,10 +221,10 @@ function updateProgressBar() {
 function showResults() {
     document.getElementById('gameScreen').classList.remove('active');
     document.getElementById('resultsScreen').classList.add('active');
-    
+
     const percentage = questions.length > 0 ? (score / (questions.length * 10)) * 100 : 0;
     document.getElementById('finalScore').textContent = `${score}/${questions.length * 10}`;
-    
+
     let message, messageClass;
     if (percentage >= 80) {
         message = "🌟 Excellent! You're well-prepared for your Data Engineering exam!";
@@ -215,7 +236,7 @@ function showResults() {
         message = "📚 Keep studying! Focus on the areas where you missed questions.";
         messageClass = "needs-improvement";
     }
-    
+
     const performanceDiv = document.getElementById('performanceMessage');
     performanceDiv.textContent = message;
     performanceDiv.className = `performance-message ${messageClass}`;
@@ -229,10 +250,10 @@ function restartGame() {
     answeredQuestions = 0;
     isTimerEnabled = false;
     clearInterval(timerInterval);
-    
+
     document.getElementById('resultsScreen').classList.remove('active');
     document.getElementById('startScreen').classList.add('active');
     document.getElementById('timerContainer').classList.add('hidden');
-    
+
     updateScore();
 }

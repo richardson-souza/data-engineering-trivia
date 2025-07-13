@@ -1,92 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Engineering Trivia</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1 class="title">🧠 Data Engineering Trivia</h1>
-            <p class="subtitle">Master your Google Data Engineering exam with interactive practice!</p>
-        </div>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Data Engineering Trivia</title>
+		<link rel="stylesheet" href="styles.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<h1 class="title">🧠 Data Engineering Trivia</h1>
+				<p class="subtitle">Master your Google Data Engineering exam with interactive practice!</p>
+			</div>
 
-        <!-- Start Screen -->
-        <div class="game-screen active" id="startScreen">
-            <div class="start-screen">
-                <h2>Ready to test your Data Engineering knowledge?</h2>
-                <p>Challenge yourself with questions covering core GCP topics.</p>
-                
-                <div class="settings-container">
-                    <div class="timer-toggle">
-                        <label for="timerToggle" class="toggle-label">Enable Timer</label>
-                        <label class="switch">
-                            <input type="checkbox" id="timerToggle">
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-                </div>
+			<!-- Start Screen -->
+			<div class="game-screen active" id="startScreen">
+				<div class="start-screen">
+					<h2>Ready to test your Data Engineering knowledge?</h2>
+					<p>Challenge yourself with questions covering core GCP topics.</p>
 
-                <button class="start-btn" onclick="startGame()">Start Quiz 🚀</button>
-            </div>
-        </div>
+					<div class="settings-container">
+						<div class="timer-toggle">
+							<label for="timerToggle" class="toggle-label">Enable Timer</label>
+							<label class="switch">
+								<input type="checkbox" id="timerToggle">
+								<span class="slider round"></span>
+							</label>
+						</div>
+					</div>
 
-        <!-- Game Screen -->
-        <div class="game-screen" id="gameScreen">
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressBar"></div>
-            </div>
-            
-            <div class="score-board">
-                <div class="score-item">
-                    <div class="score-number" id="currentQuestion">1</div>
-                    <div class="score-label">Question</div>
-                </div>
-                <div class="score-item">
-                    <div class="score-number" id="currentScore">0</div>
-                    <div class="score-label">Score</div>
-                </div>
-                <div class="score-item hidden" id="timerContainer">
-                    <div class="score-number" id="timer">15</div>
-                    <div class="score-label">Time Left</div>
-                </div>
-                <div class="score-item">
-                    <div class="score-number" id="streak">0</div>
-                    <div class="score-label">Streak</div>
-                </div>
-            </div>
+					<button class="start-btn" onclick="startGame()">Start Quiz 🚀</button>
+				</div>
+			</div>
 
-            <div class="question-card">
-                <!-- Question Header for Number and Icon -->
-                <div class="question-header">
-                    <div class="question-number" id="questionNumber">Question 1 of 11</div>
-                    <div id="verification-icon-container"></div>
-                </div>
-                <div class="question-text" id="questionText"></div>
-                <div class="answers-grid" id="answersGrid"></div>
-                <div class="explanation" id="explanation">
-                    <div class="explanation-title">💡 Explanation:</div>
-                    <div class="explanation-text" id="explanationText"></div>
-                </div>
-                <br>
-                <br>
-                <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next Question →</button>
-            </div>
-        </div>
+			<!-- Game Screen -->
+			<div class="game-screen" id="gameScreen">
+				<div class="progress-bar">
+					<div class="progress-fill" id="progressBar"></div>
+				</div>
 
-        <!-- Results Screen -->
-        <div class="game-screen" id="resultsScreen">
-            <div class="results-screen">
-                <h2 class="results-title">Quiz Complete! 🎉</h2>
-                <div class="final-score" id="finalScore"></div>
-                <div class="performance-message" id="performanceMessage"></div>
-                <button class="restart-btn" onclick="restartGame()">Try Again 🔄</button>
-            </div>
-        </div>
-    </div>
+				<div class="score-board">
+					<div class="score-item">
+						<div class="score-number" id="currentQuestion">1</div>
+						<div class="score-label">Question</div>
+					</div>
+					<div class="score-item">
+						<div class="score-number" id="currentScore">0</div>
+						<div class="score-label">Score</div>
+					</div>
+					<div class="score-item hidden" id="timerContainer">
+						<div class="score-number" id="timer">15</div>
+						<div class="score-label">Time Left</div>
+					</div>
+					<div class="score-item">
+						<div class="score-number" id="streak">0</div>
+						<div class="score-label">Streak</div>
+					</div>
+				</div>
 
-    <script src="scripts.js"></script>
-</body>
+				<div
+					class="question-card">
+					<div class="question-header">
+						<div class="question-number" id="questionNumber">Question 1 of 11</div>
+						<div id="verification-icon-container"></div>
+					</div>
+					<div class="question-text" id="questionText"></div>
+					<div class="answers-grid" id="answersGrid"></div>
+					<div class="explanation" id="explanation">
+						<div class="explanation-title">💡 Explanation:</div>
+						<div class="explanation-text" id="explanationText"></div>
+					</div>
+					<br>
+					<br>
+					<button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next Question →</button>
+				</div>
+			</div>
+
+			<!-- Results Screen -->
+			<div class="game-screen" id="resultsScreen">
+				<div class="results-screen">
+					<h2 class="results-title">Quiz Complete! 🎉</h2>
+					<div class="final-score" id="finalScore"></div>
+					<div class="performance-message" id="performanceMessage"></div>
+					<button class="restart-btn" onclick="restartGame()">Try Again 🔄</button>
+				</div>
+			</div>
+		</div>
+
+		<script src="scripts.js"></script>
+	</body>
 </html>
