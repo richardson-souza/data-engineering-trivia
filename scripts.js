@@ -99,7 +99,7 @@ function loadQuestion() {
 
     const question = questions[currentQuestionIndex];
     document.getElementById('questionNumber').textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
-    document.getElementById('questionText').textContent = question.question;
+    document.getElementById('questionText').innerHTML = question.question;
     document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
 
     const iconContainer = document.getElementById('verification-icon-container');

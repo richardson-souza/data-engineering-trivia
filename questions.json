@@ -28,7 +28,7 @@
             "verified": true
         },
         {
-            "question": "You are using the on-demand billing model. You run the following query on a 5 TB table named customer_events, where the event_details column is 2 TB in size and the user_id column is 50 GB in size. SQLSELECT\n  user_id\nFROM\n  `my_project.my_dataset.customer_events`\nWHERE\n  event_type = 'purchase' What is the primary factor that will determine the cost of this query?",
+            "question": "You are using the on-demand billing model. You run the following query on a 5 TB table named customer_events, where the event_details column is 2 TB in size and the user_id column is 50 GB in size.<pre><code>SELECT user_id<br>FROM<br>`my_project.my_dataset.customer_events`<br>WHERE event_type = 'purchase'</code></pre>What is the primary factor that will determine the cost of this query?",
             "category": ["BigQuery"],
             "answers": [
                 "The number of rows returned by the query.",
@@ -84,7 +84,7 @@
             "verified": true
         },
         {
-            "question": "A team implements a simple CDC process for their products table using a last_updated_timestamp column. The process runs every 10 minutes and copies any rows with a newer timestamp to BigQuery. They soon discover that when products are discontinued and their rows are deleted from the source table, the old product information remains in BigQuery indefinitely.Why is this happening?",
+            "question": "A team implements a simple CDC process for their products table using a last_updated_timestamp column. The process runs every 10 minutes and copies any rows with a newer timestamp to BigQuery. They soon discover that when products are discontinued and their rows are deleted from the source table, the old product information remains in BigQuery indefinitely. Why is this happening?",
             "category": ["Change Data Capture", "CDC", "BigQuery"],
             "answers": [
                 "The MERGE statement in BigQuery is not configured correctly.",
