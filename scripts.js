@@ -129,8 +129,8 @@ function loadQuestion() {
     question.answers.forEach((answer, index) => {
         const button = document.createElement('button');
         button.className = 'answer-btn';
-        const letter = String.fromCharCode(65 + index); // A, B, C, D
-        button.textContent = `${letter}. ${answer}`;
+        const letter = String.fromCharCode(65 + index);
+        button.innerHTML = `<span class="answer-letter">${letter}</span><span class="answer-text">${answer}</span>`;
         button.onclick = () => selectAnswer(index);
         answersGrid.appendChild(button);
     });

@@ -296,6 +296,29 @@ input:checked + .slider:before {
     opacity: 0.6;
 }
 
+.answer-btn {
+    display: flex;
+    align-items: flex-start; /* Aligns letter to the top of the text */
+    gap: 12px;
+}
+
+.answer-letter {
+    font-weight: bold;
+    color: #4285f4; /* Use an accent color */
+    background-color: #e8f0fe;
+    border-radius: 50%;
+    min-width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+.answer-text {
+    flex: 1; /* Allows text to wrap correctly */
+}
+
 .next-btn {
     background: linear-gradient(135deg, #34a853, #4285f4);
     color: white;
@@ -392,15 +415,25 @@ input:checked + .slider:before {
 
 @media (max-width: 600px) {
     .container {
-        padding: 20px;
+        padding: 20px 15px; /* Reduce side padding */
     }
-    
+
     .title {
-        font-size: 2rem;
+        font-size: 1.8rem; /* Slightly smaller title */
     }
-    
+
+    .question-card {
+        padding: 20px; /* Reduce card padding */
+    }
+
+    .question-text {
+        font-size: 1.15rem; /* Optimize question font size */
+        margin-bottom: 25px; /* More space before answers */
+    }
+
     .answers-grid {
         grid-template-columns: 1fr;
+        gap: 12px; /* Slightly smaller gap between answers */
     }
 
     .score-board {
@@ -410,5 +443,12 @@ input:checked + .slider:before {
 
     .score-item {
         flex-basis: 40%;
+    }
+
+    /* Make action buttons full-width for easier tapping */
+    .next-btn, .restart-btn {
+        width: 100%;
+        padding-top: 15px;
+        padding-bottom: 15px;
     }
 }
