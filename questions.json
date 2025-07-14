@@ -428,7 +428,7 @@
             ],
             "correct": 2,
             "explanation": "Cloud Run functions allow you to execute code in response to various Google Cloud events such as file uploads, Pub/Sub messages, or HTTP triggers. Eventarc routes events but does not execute the code itself.",
-            "ai_generated": true
+            "verified": true
         },
         {
             "question": "In the context of Cloud Composer, what is a DAG?",
@@ -440,7 +440,7 @@
             ],
             "correct": 0,
             "explanation": "A DAG (Directed Acyclic Graph) defines the sequence and dependencies of tasks in a Cloud Composer (Apache Airflow) workflow.",
-            "ai_generated": true
+            "verified": true
         },
         {
             "question": "Which of the following services enables the creation of a unified event-driven architecture for loosely coupled services?",
@@ -452,7 +452,7 @@
             ],
             "correct": 3,
             "explanation": "Eventarc allows building unified event-driven architectures by routing events from sources to targets across Google Cloud services.",
-            "ai_generated": true
+            "verified": true
         },
         {
             "question": "Which Google Cloud service acts as a central orchestrator, seamlessly integrating your pipelines across diverse systems?",
@@ -464,7 +464,7 @@
             ],
             "correct": 2,
             "explanation": "Cloud Composer (based on Apache Airflow) is designed to orchestrate and manage complex workflows across cloud and on-premises systems.",
-            "ai_generated": true
+            "verified": true
         },
         {
             "question": "Which of the following Google Cloud services allows you to automate tasks by invoking your workloads at specified, recurring intervals?",
@@ -476,7 +476,7 @@
             ],
             "correct": 0,
             "explanation": "Cloud Scheduler is a cron-based service that automates tasks by invoking workloads at scheduled, recurring times.",
-            "ai_generated": true
+            "verified": true
         }
     ]
 }
