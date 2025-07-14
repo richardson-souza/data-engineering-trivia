@@ -230,6 +230,7 @@
         },
         {
             "question": "Which of the following services efficiently moves large datasets from on-premises, multicloud file systems, object stores, and HDFS into Cloud Storage and supports scheduled transfers?",
+            "category": ["Data replication", "Migration"],
             "answers": [
             "Storage Transfer Service",
             "Vertex AI",
@@ -242,6 +243,7 @@
         },
         {
             "question": "In Datastream event messages, which section contains the actual data changes in a key-value format?",
+            "category": ["Data replication", "Migration"],
             "answers": [
             "Change log",
             "Payload",
@@ -254,6 +256,7 @@
         },
         {
             "question": "Which of the following tools is best suited for migrating very large datasets offline?",
+            "category": ["Data replication", "Migration"],
             "answers": [
             "gcloud storage command",
             "Transfer Appliance",
@@ -266,6 +269,7 @@
         },
         {
             "question": "The ease of migrating data is heavily influenced by which two factors?",
+            "category": ["Data replication", "Migration"],
             "answers": [
             "Data size and network bandwidth",
             "Data source and destination platform",
@@ -278,6 +282,7 @@
         },
         {
             "question": "Which tool or service uses the “cp” command to facilitate ad-hoc transfers directly to Cloud Storage from various on-premise sources?",
+            "category": ["Data replication", "Migration"],
             "answers": [
             "Storage Transfer Service",
             "gcloud storage command",
@@ -287,6 +292,191 @@
             "correct": 1,
             "explanation": "The gcloud storage CLI supports ad-hoc file transfers using commands like 'gcloud storage cp'. It is suitable for quick, manual tasks. The others are managed services or hardware-based tools not intended for ad-hoc CLI-based transfers.",
             "verified": true
+        },
+        {
+            "question": "Which of the following is a key benefit of using stored procedures in BigQuery?",
+            "category": ["Extract", "Load", "Pipeline"],
+            "answers": [
+            "The simplification of ad-hoc SQL query execution.",
+            "The flexibility to integrate with external APIs directly.",
+            "The ability to define custom data transformations only using Python.",
+            "The improvement of code reusability and maintainability."
+            ],
+            "correct": 3,
+            "explanation": "Stored procedures in BigQuery encapsulate logic into reusable blocks, improving maintainability and reusability. They are not designed for ad-hoc querying, calling external APIs, or using Python.",
+            "verified": true
+        },
+        {
+            "question": "Which of the following best describes the core concept of extract, load, and transform (ELT)?",
+            "category": ["Extract", "Load", "Pipeline"],
+            "answers": [
+            "Extracting only the necessary data and transforming it before loading.",
+            "Extracting data, loading it into a staging area, and then transforming it.",
+            "Loading data into a data warehouse and then transforming it within the warehouse.",
+            "Transforming data before loading it into a data warehouse."
+            ],
+            "correct": 2,
+            "explanation": "ELT involves loading raw data into a data warehouse and then transforming it using the warehouse's compute resources. This differs from ETL, where transformation occurs before loading.",
+            "verified": true
+        },
+        {
+            "question": "How does Dataform enhance the management of SQL workflows in BigQuery?",
+            "category": ["Extract", "Load", "Pipeline"],
+            "answers": [
+            "It automates data migration from on-premises databases to BigQuery.",
+            "It provides a visual interface for designing and executing ad-hoc SQL queries.",
+            "It replaces the need for SQL entirely, allowing transformations using only Python.",
+            "It unifies transformation, assertion, and automation within BigQuery, streamlining data operations."
+            ],
+            "correct": 3,
+            "explanation": "Dataform streamlines SQL workflow management in BigQuery by integrating transformation logic, dependency management, and data quality testing into a single, SQL-based framework.",
+            "verified": true
+        },
+        {
+            "question": "What is the primary purpose of assertions in Dataform?",
+            "category": ["Extract", "Load", "Pipeline"],
+            "answers": [
+            "To compile SQLX files into executable SQL scripts.",
+            "To define data quality tests, ensuring data consistency and accuracy.",
+            "To define and manage dependencies between tables and views.",
+            "To schedule the execution of SQL workflows at specific intervals."
+            ],
+            "correct": 1,
+            "explanation": "Assertions in Dataform are used to define data quality tests that validate data integrity and consistency. They are not used for compilation, dependency definition, or scheduling.",
+            "verified": true
+        },
+        {
+            "question": "What is the primary advantage of using BigQuery's procedural language support?",
+            "category": ["Extract", "Load", "Pipeline"],
+            "answers": [
+            "It enhances the performance of individual SQL queries.",
+            "It simplifies the creation of custom data transformations using Python.",
+            "It allows the use of external libraries within SQL queries.",
+            "It enables the execution of multiple SQL statements in sequence with shared state."
+            ],
+            "correct": 3,
+            "explanation": "BigQuery's procedural SQL allows for control flow (e.g., loops, conditions) and execution of multiple statements with shared variables, facilitating complex transformations.",
+            "verified": true
+        },
+        {
+            "question": "Which Google Cloud service is best suited for building complex data pipelines with a visual, drag-and-drop interface?",
+            "answers": [
+            "Data Fusion",
+            "Dataflow",
+            "Dataproc",
+            "Dataprep"
+            ],
+            "correct": 0,
+            "explanation": "Data Fusion provides a visual interface for building ETL pipelines without writing code, making it ideal for complex multi-stage data workflows.",
+            "verified": true
+        },
+        {
+            "question": "Which Google Cloud service is recommended for handling streaming data pipelines that require millisecond-level latency analytics?",
+            "answers": [
+            "BigQuery",
+            "Bigtable",
+            "Dataproc",
+            "Dataflow"
+            ],
+            "correct": 1,
+            "explanation": "Bigtable is designed for low-latency, high-throughput access to time-series or operational data, making it suitable for streaming analytics with millisecond latency.",
+            "verified": true
+        },
+        {
+            "question": "What is the primary advantage of using Dataflow templates?",
+            "answers": [
+            "It allows for reusability and parameterization of pipelines.",
+            "It automates the migration of data from on-premises databases.",
+            "It enables direct integration with external APIs.",
+            "It replaces the need for SQL in data transformations."
+            ],
+            "correct": 0,
+            "explanation": "Dataflow templates enable precompiled and reusable pipelines that can be parameterized and triggered by end users or automated systems.",
+            "verified": true
+        },
+        {
+            "question": "Which Google Cloud service is specifically designed for serverless, no-code data transformation using recipes?",
+            "answers": [
+            "Dataproc",
+            "Dataflow",
+            "Dataprep",
+            "Data Fusion"
+            ],
+            "correct": 2,
+            "explanation": "Dataprep is a no-code, serverless tool designed for data preparation tasks using recipes, enabling business users to clean and shape data visually.",
+            "verified": true
+        },
+        {
+            "question": "Which of the following features makes Dataproc Serverless for Spark ideal for interactive development and exploration?",
+            "answers": [
+            "BigQuery external procedures",
+            "JupyterLab integration",
+            "Custom containers",
+            "Workflow templates"
+            ],
+            "correct": 1,
+            "explanation": "JupyterLab integration in Dataproc Serverless for Spark allows data scientists to interactively develop and explore Spark applications in a familiar notebook interface.",
+            "verified": true
+        },
+        {
+            "question": "Which of the following Google Cloud services allows you to execute code in response to various Google Cloud events?",
+            "answers": [
+            "Eventarc",
+            "Cloud Scheduler",
+            "Cloud Run functions",
+            "Cloud Composer"
+            ],
+            "correct": 2,
+            "explanation": "Cloud Run functions allow you to execute code in response to various Google Cloud events such as file uploads, Pub/Sub messages, or HTTP triggers. Eventarc routes events but does not execute the code itself.",
+            "ai_generated": true
+        },
+        {
+            "question": "In the context of Cloud Composer, what is a DAG?",
+            "answers": [
+            "Directed acyclic graph",
+            "Dynamic allocation group",
+            "Distributed application graph",
+            "Data access gateway"
+            ],
+            "correct": 0,
+            "explanation": "A DAG (Directed Acyclic Graph) defines the sequence and dependencies of tasks in a Cloud Composer (Apache Airflow) workflow.",
+            "ai_generated": true
+        },
+        {
+            "question": "Which of the following services enables the creation of a unified event-driven architecture for loosely coupled services?",
+            "answers": [
+            "Cloud Run Functions",
+            "Cloud Composer",
+            "Cloud Scheduler",
+            "Eventarc"
+            ],
+            "correct": 3,
+            "explanation": "Eventarc allows building unified event-driven architectures by routing events from sources to targets across Google Cloud services.",
+            "ai_generated": true
+        },
+        {
+            "question": "Which Google Cloud service acts as a central orchestrator, seamlessly integrating your pipelines across diverse systems?",
+            "answers": [
+            "Cloud Scheduler",
+            "Cloud Run functions",
+            "Cloud Composer",
+            "Eventarc"
+            ],
+            "correct": 2,
+            "explanation": "Cloud Composer (based on Apache Airflow) is designed to orchestrate and manage complex workflows across cloud and on-premises systems.",
+            "ai_generated": true
+        },
+        {
+            "question": "Which of the following Google Cloud services allows you to automate tasks by invoking your workloads at specified, recurring intervals?",
+            "answers": [
+            "Cloud Scheduler",
+            "Cloud Run functions",
+            "Eventarc",
+            "Cloud Composer"
+            ],
+            "correct": 0,
+            "explanation": "Cloud Scheduler is a cron-based service that automates tasks by invoking workloads at scheduled, recurring times.",
+            "ai_generated": true
         }
     ]
 }
