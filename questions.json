@@ -232,39 +232,39 @@
             "question": "Which of the following services efficiently moves large datasets from on-premises, multicloud file systems, object stores, and HDFS into Cloud Storage and supports scheduled transfers?",
             "category": ["Data replication", "Migration"],
             "answers": [
-            "Storage Transfer Service",
-            "Vertex AI",
-            "gcloud storage",
-            "Transfer Appliance"
+                "Storage Transfer Service",
+                "Vertex AI",
+                "gcloud storage",
+                "Transfer Appliance"
             ],
             "correct": 0,
-            "explanation": "Storage Transfer Service is designed for large-scale, scheduled migrations from on-premises and cloud sources. It's a managed service optimized for automated transfers. Vertex AI is for machine learning, not data transfer. gcloud storage is a CLI for manual transfers. Transfer Appliance is a hardware device for offline migrations, not for scheduled cloud-based transfers.",
+            "explanation": "<p><strong>Storage Transfer Service</strong> is designed for large-scale, scheduled migrations from on-premises and cloud sources. It's a managed service optimized for automated transfers.</p><ul><li><strong>Vertex AI</strong> is for machine learning, not data transfer.</li><li><strong>gcloud storage</strong> is a CLI for manual transfers.</li><li><strong>Transfer Appliance</strong> is a hardware device for offline migrations, not for scheduled cloud-based transfers.</li></ul>",
             "verified": true
         },
         {
             "question": "In Datastream event messages, which section contains the actual data changes in a key-value format?",
             "category": ["Data replication", "Migration"],
             "answers": [
-            "Change log",
-            "Payload",
-            "Source-specific metadata",
-            "Generic metadata"
+                "Change log",
+                "Payload",
+                "Source-specific metadata",
+                "Generic metadata"
             ],
             "correct": 1,
-            "explanation": "The payload section in Datastream event messages holds the actual data changes in a key-value format. 'Change log' is a general term. Source-specific metadata holds origin-related metadata. Generic metadata holds context info like operation type.",
+            "explanation": "<p>The <strong>payload</strong> section in Datastream event messages holds the actual data changes in a key-value format.</p><ul><li><strong>Change log</strong> is a general term and not a specific field.</li><li><strong>Source-specific metadata</strong> contains metadata related to the data's origin (e.g., database engine).</li><li><strong>Generic metadata</strong> provides context such as operation type (insert, update, delete), timestamp, and more.</li></ul>",
             "verified": true
         },
         {
             "question": "Which of the following tools is best suited for migrating very large datasets offline?",
             "category": ["Data replication", "Migration"],
             "answers": [
-            "gcloud storage command",
-            "Transfer Appliance",
-            "Datastream",
-            "Storage Transfer Service"
+                "gcloud storage command",
+                "Transfer Appliance",
+                "Datastream",
+                "Storage Transfer Service"
             ],
             "correct": 1,
-            "explanation": "Transfer Appliance is a physical device designed for securely transferring very large datasets offline to Google Cloud. The other options are for online or streaming transfers.",
+            "explanation": "<p><strong>Transfer Appliance</strong> is a physical device designed for securely transferring very large datasets <em>offline</em> to Google Cloud.</p><ul><li><strong>gcloud storage</strong> is a command-line tool for online and manual data transfers.</li><li><strong>Datastream</strong> supports real-time data replication, not offline bulk transfers.</li><li><strong>Storage Transfer Service</strong> is used for <em>online</em>, scheduled transfers between cloud or on-prem sources.</li></ul>",
             "verified": true
         },
         {
@@ -277,7 +277,7 @@
             "Data format and storage type"
             ],
             "correct": 0,
-            "explanation": "Data size and network bandwidth are the two primary factors that impact the speed and difficulty of data migration. While tools and formats matter, physical limits like size and throughput dominate migration feasibility.",
+            "explanation": "<p><strong>Answer: A - Data size and network bandwidth</strong></p><p>Data size and network bandwidth are the two primary factors that impact the speed and difficulty of data migration. While tools and formats matter, physical limits like size and throughput dominate migration feasibility.</p>",
             "verified": true
         },
         {
@@ -290,7 +290,7 @@
             "Datastream"
             ],
             "correct": 1,
-            "explanation": "The gcloud storage CLI supports ad-hoc file transfers using commands like 'gcloud storage cp'. It is suitable for quick, manual tasks. The others are managed services or hardware-based tools not intended for ad-hoc CLI-based transfers.",
+            "explanation": "<p><strong>Answer: B - gcloud storage command</strong></p><p>The gcloud storage CLI supports ad-hoc file transfers using commands like &#x27;gcloud storage cp&#x27;. It is suitable for quick, manual tasks. The others are managed services or hardware-based tools not intended for ad-hoc CLI-based transfers.</p>",
             "verified": true
         },
         {
@@ -303,7 +303,7 @@
             "The improvement of code reusability and maintainability."
             ],
             "correct": 3,
-            "explanation": "Stored procedures in BigQuery encapsulate logic into reusable blocks, improving maintainability and reusability. They are not designed for ad-hoc querying, calling external APIs, or using Python.",
+            "explanation": "<p><strong>Answer: D - The improvement of code reusability and maintainability</strong></p><p>Stored procedures in BigQuery encapsulate logic into reusable blocks, improving maintainability and reusability. They are not designed for ad-hoc querying, calling external APIs, or using Python.</p>",
             "verified": true
         },
         {
@@ -316,7 +316,7 @@
             "Transforming data before loading it into a data warehouse."
             ],
             "correct": 2,
-            "explanation": "ELT involves loading raw data into a data warehouse and then transforming it using the warehouse's compute resources. This differs from ETL, where transformation occurs before loading.",
+            "explanation": "<p><strong>Answer: C - Loading data into a data warehouse and then transforming it within the warehouse</strong></p><p>ELT involves loading raw data into a data warehouse and then transforming it using the warehouse's compute resources. This differs from ETL, where transformation occurs before loading.</p>",
             "verified": true
         },
         {
@@ -329,7 +329,7 @@
             "It unifies transformation, assertion, and automation within BigQuery, streamlining data operations."
             ],
             "correct": 3,
-            "explanation": "Dataform streamlines SQL workflow management in BigQuery by integrating transformation logic, dependency management, and data quality testing into a single, SQL-based framework.",
+            "explanation": "<p><strong>Answer: D - It unifies transformation, assertion, and automation within BigQuery, streamlining data operations</strong></p><p>Dataform streamlines SQL workflow management in BigQuery by integrating transformation logic, dependency management, and data quality testing into a single, SQL-based framework.</p>",
             "verified": true
         },
         {
@@ -342,7 +342,7 @@
             "To schedule the execution of SQL workflows at specific intervals."
             ],
             "correct": 1,
-            "explanation": "Assertions in Dataform are used to define data quality tests that validate data integrity and consistency. They are not used for compilation, dependency definition, or scheduling.",
+            "explanation": "<p><strong>Answer: B - To define data quality tests, ensuring data consistency and accuracy</strong></p><p>Assertions in Dataform are used to define data quality tests that validate data integrity and consistency. They are not used for compilation, dependency definition, or scheduling.</p>",
             "verified": true
         },
         {
@@ -355,7 +355,7 @@
             "It enables the execution of multiple SQL statements in sequence with shared state."
             ],
             "correct": 3,
-            "explanation": "BigQuery's procedural SQL allows for control flow (e.g., loops, conditions) and execution of multiple statements with shared variables, facilitating complex transformations.",
+            "explanation": "<p><strong>Answer: D - It enables the execution of multiple SQL statements in sequence with shared state</strong></p><p>BigQuery's procedural SQL allows for control flow (e.g., loops, conditions) and execution of multiple statements with shared variables, facilitating complex transformations.</p>",
             "verified": true
         },
         {
@@ -367,7 +367,7 @@
             "Dataprep"
             ],
             "correct": 0,
-            "explanation": "Data Fusion provides a visual interface for building ETL pipelines without writing code, making it ideal for complex multi-stage data workflows.",
+            "explanation": "<p><strong>Answer: A - Data Fusion</strong></p><p>Data Fusion provides a visual interface for building ETL pipelines without writing code, making it ideal for complex multi-stage data workflows.</p>",
             "verified": true
         },
         {
@@ -379,7 +379,7 @@
             "Dataflow"
             ],
             "correct": 1,
-            "explanation": "Bigtable is designed for low-latency, high-throughput access to time-series or operational data, making it suitable for streaming analytics with millisecond latency.",
+            "explanation": "<p><strong>Answer: B - Bigtable</strong></p><p>Bigtable is designed for low-latency, high-throughput access to time-series or operational data, making it suitable for streaming analytics with millisecond latency.</p>",
             "verified": true
         },
         {
@@ -391,7 +391,7 @@
             "It replaces the need for SQL in data transformations."
             ],
             "correct": 0,
-            "explanation": "Dataflow templates enable precompiled and reusable pipelines that can be parameterized and triggered by end users or automated systems.",
+            "explanation": "<p><strong>Answer: A - It allows for reusability and parameterization of pipelines</strong></p><p>Dataflow templates enable precompiled and reusable pipelines that can be parameterized and triggered by end users or automated systems.</p>",
             "verified": true
         },
         {
@@ -403,7 +403,7 @@
             "Data Fusion"
             ],
             "correct": 2,
-            "explanation": "Dataprep is a no-code, serverless tool designed for data preparation tasks using recipes, enabling business users to clean and shape data visually.",
+            "explanation": "<p><strong>Answer: C - Dataprep</strong></p><p>Dataprep is a no-code, serverless tool designed for data preparation tasks using recipes, enabling business users to clean and shape data visually.</p>",
             "verified": true
         },
         {
@@ -415,7 +415,7 @@
             "Workflow templates"
             ],
             "correct": 1,
-            "explanation": "JupyterLab integration in Dataproc Serverless for Spark allows data scientists to interactively develop and explore Spark applications in a familiar notebook interface.",
+            "explanation": "<p><strong>Answer: B - JupyterLab integration</strong></p><p>JupyterLab integration in Dataproc Serverless for Spark allows data scientists to interactively develop and explore Spark applications in a familiar notebook interface.</p>",
             "verified": true
         },
         {
@@ -427,7 +427,7 @@
             "Cloud Composer"
             ],
             "correct": 2,
-            "explanation": "Cloud Run functions allow you to execute code in response to various Google Cloud events such as file uploads, Pub/Sub messages, or HTTP triggers. Eventarc routes events but does not execute the code itself.",
+            "explanation": "<p><strong>Answer: C - Cloud Run functions</strong></p><p>Cloud Run functions allow you to execute code in response to various Google Cloud events such as file uploads, Pub/Sub messages, or HTTP triggers. Eventarc routes events but does not execute the code itself.</p>",
             "verified": true
         },
         {
@@ -439,7 +439,7 @@
             "Data access gateway"
             ],
             "correct": 0,
-            "explanation": "A DAG (Directed Acyclic Graph) defines the sequence and dependencies of tasks in a Cloud Composer (Apache Airflow) workflow.",
+            "explanation": "<p><strong>Answer: A - Directed acyclic graph</strong></p><p>A DAG (Directed Acyclic Graph) defines the sequence and dependencies of tasks in a Cloud Composer (Apache Airflow) workflow.</p>",
             "verified": true
         },
         {
@@ -451,7 +451,7 @@
             "Eventarc"
             ],
             "correct": 3,
-            "explanation": "Eventarc allows building unified event-driven architectures by routing events from sources to targets across Google Cloud services.",
+            "explanation": "<p><strong>Answer: D - Eventarc</strong></p><p>Eventarc allows building unified event-driven architectures by routing events from sources to targets across Google Cloud services.</p>",
             "verified": true
         },
         {
@@ -463,7 +463,7 @@
             "Eventarc"
             ],
             "correct": 2,
-            "explanation": "Cloud Composer (based on Apache Airflow) is designed to orchestrate and manage complex workflows across cloud and on-premises systems.",
+            "explanation": "<p><strong>Answer: C - Cloud Composer</strong></p><p>Cloud Composer (based on Apache Airflow) is designed to orchestrate and manage complex workflows across cloud and on-premises systems.</p>",
             "verified": true
         },
         {
@@ -475,7 +475,147 @@
             "Cloud Composer"
             ],
             "correct": 0,
-            "explanation": "Cloud Scheduler is a cron-based service that automates tasks by invoking workloads at scheduled, recurring times.",
+            "explanation": "<p><strong>Answer: A - Cloud Scheduler</strong></p><p>Cloud Scheduler is a cron-based service that automates tasks by invoking workloads at scheduled, recurring times.</p>",
+            "verified": true
+        },
+        {
+            "question": "A business intelligence team complains that their weekly sales reports are slow and the data is often inconsistent. They need a reliable system to get cleaned sales data from the company's transactional database and various third-party marketing platforms. According to the role defined in the document, what is the primary responsibility of a data engineer in this situation?",
+            "category": ["Data Engineering", "Data Pipeline"],
+            "answers": [
+            "Train the BI team to write more optimized SQL queries.",
+            "Build and maintain a data pipeline to ingest, clean, and consolidate the data into a data warehouse.",
+            "Design a new user interface for the BI team's reporting dashboards.",
+            "Perform statistical analysis on the sales data to identify the cause of the inconsistencies."
+            ],
+            "correct": 1,
+            "explanation": "<p><strong>Answer: B - Build and maintain a data pipeline to ingest, clean, and consolidate the data into a data warehouse.</strong></p><p>The primary role of the data engineer is to build reliable pipelines that provide clean and consolidated data for downstream analytics and reporting.</p><p>Other options either describe roles outside the data engineer's scope or focus on tasks that don't solve the core issue.</p>",
+            "ai_generated": true,
+            "verified": true
+        },
+        {
+            "question": "An e-commerce company wants to personalize the user experience on its website. To do this, they need to make product recommendation data available to the company's machine learning models. The raw data exists in various formats across multiple source systems. Which task falls under the data engineer's role of getting data into a 'usable condition'?",
+            "category": ["Data Engineering", "Data Pipeline"],
+            "answers": [
+            "Designing the machine learning model's algorithm.",
+            "Building a data pipeline that transforms the raw data into a clean, consistent format for the ML model to consume.",
+            "Granting the ML team direct access to all raw data sources.",
+            "Monitoring the resource consumption of the production website."
+            ],
+            "correct": 1,
+            "explanation": "<p><strong>Answer: B - Building a data pipeline that transforms the raw data into a clean, consistent format for the ML model to consume.</strong></p><p>Data engineers prepare raw data into formats that machine learning teams can easily use, ensuring data quality and consistency.</p><p>The other options describe responsibilities outside the primary data engineering scope.</p>",
+            "ai_generated": true,
+            "verified": true
+        },
+        {
+            "question": "A data engineering team has successfully built a pipeline that delivers clean data to a data warehouse. Now, the head of analytics wants to ensure the entire process is reliable and runs automatically every night without manual intervention. Which core data engineering function addresses this requirement?",
+            "category": ["Data Engineering", "Automation"],
+            "answers": [
+            "Managing data access and governance.",
+            "Adding new value to the data through ad-hoc analysis.",
+            "Productionizing data processes through automation and monitoring.",
+            "Getting data to where it can be useful by selecting a storage location."
+            ],
+            "correct": 2,
+            "explanation": "<p><strong>Answer: C - Productionizing data processes through automation and monitoring.</strong></p><p>This function ensures data pipelines run reliably and automatically, eliminating manual intervention and improving stability.</p><p>Other options describe different roles or earlier steps in the data lifecycle.</p>",
+            "ai_generated": true,
+            "verified": true
+        },
+        {
+            "question": "A company's raw operational data is stored in a Cloud SQL database. A data analyst needs access to this data for a new report but finds the schema confusing and the data not ready for analysis. A data engineer is tasked with helping the analyst. What is the data engineer's main goal?",
+            "category": ["Data Engineering", "Data Pipeline"],
+            "answers": [
+            "To build a data pipeline that gets the data into a place and condition from which the business can make data-driven decisions.",
+            "To manage the data analyst's permissions to the source database.",
+            "To write the final report for the data analyst.",
+            "To decommission the Cloud SQL database and replace it with a new one."
+            ],
+            "correct": 0,
+            "explanation": "<p><strong>Answer: A - To build a data pipeline that gets the data into a place and condition from which the business can make data-driven decisions.</strong></p><p>The engineer’s key role is to prepare data so that analysts can effectively use it, rather than managing permissions or writing reports.</p>",
+            "ai_generated": true,
+            "verified": true
+        },
+        {
+            "question": "A data engineer is designing a new data platform. The first step in their plan is to gather all raw data from various enterprise systems, such as relational databases and offline files, into a single, durable location. Which foundational task of a data engineer does this action represent?",
+            "category": ["Data Engineering", "Data Pipeline"],
+            "answers": [
+            "Productionizing data processes.",
+            "Managing the data through governance.",
+            "Getting the data into a usable condition through transformation.",
+            "Getting the data to where it can be useful through raw data ingestion and storage."
+            ],
+            "correct": 3,
+            "explanation": "<p><strong>Answer: D - Getting the data to where it can be useful through raw data ingestion and storage.</strong></p><p>This foundational task involves collecting raw data into a centralized repository, setting the stage for later transformation and analysis.</p><p>The other options are either later steps or different focuses.</p>",
+            "ai_generated": true,
+            "verified": true
+        },
+        {
+            "question": "A marketing analyst wants to calculate the customer acquisition cost. The required data is spread across a CRM system, Google Analytics, and a promotions database, each managed by a different department. Which common data engineering challenge does this situation exemplify?",
+            "category": ["Data Access", "Data Integration", "Business Use Case"],
+            "answers": [
+            "Lack of available computational resources.",
+            "Poor query performance in the data warehouse.",
+            "Difficulty accessing data because it is siloed in many upstream source systems.",
+            "Inaccurate data quality requiring complex transformations."
+            ],
+            "correct": 2,
+            "explanation": "<p><strong>Answer: C - Difficulty accessing data because it is siloed in many upstream source systems</strong></p><p>This scenario illustrates the challenge of siloed data, where relevant information is scattered across various tools and departments, making unified analysis difficult.</p>",
+            "ai_generated": true,
+            "verified": true
+        },
+        {
+            "question": "A data engineering team uses an on-premises Hadoop cluster for its nightly ETL jobs. During holiday sales events, the jobs take too long to complete. During quieter months, the cluster is mostly idle. Which data engineering challenge associated with on-premises systems does this describe?",
+            "category": ["Infrastructure", "Scalability", "Performance"],
+            "answers": [
+            "Ensuring data accuracy and quality.",
+            "Managing server and cluster capacity to handle variable workloads, leading to periods of being under-provisioned or under-utilized.",
+            "Consolidating disparate data formats.",
+            "Managing access controls for different teams."
+            ],
+            "correct": 1,
+            "explanation": "<p><strong>Answer: B - Managing server and cluster capacity to handle variable workloads</strong></p><p>The issue reflects the difficulty of scaling on-premise systems up and down to meet fluctuating workloads, which often results in inefficiencies during both peak and low usage periods.</p>",
+            "ai_generated": true,
+            "verified": true
+        },
+        {
+            "question": "A junior data engineer receives a dataset from an operational system. They notice that all transaction timestamps are stored in local time zones without any UTC conversion, and many customer fields are null for cash transactions. Which data engineering challenge must be addressed before this data can be used for reliable analytics?",
+            "category": ["Data Quality", "Data Cleaning", "Transformation"],
+            "answers": [
+            "Query performance and optimization.",
+            "Data accuracy and quality, requiring cleaning and transformation.",
+            "Availability of computational resources.",
+            "Managing access to the source system."
+            ],
+            "correct": 1,
+            "explanation": "<p><strong>Answer: B - Data accuracy and quality, requiring cleaning and transformation</strong></p><p>The scenario highlights common data quality issues such as inconsistent time zones and missing values, which must be resolved before performing accurate analytics.</p>",
+            "ai_generated": true,
+            "verified": true
+        },
+        {
+            "question": "A data engineer is tasked with building a data warehouse on-premise. The plan requires them to select a query engine, continually apply software patches, manage cluster capacity, and tune for concurrent queries. This work represents which common challenge of on-premise data engineering that can be simplified by moving to the cloud?",
+            "category": ["Infrastructure", "Cloud Migration", "Operational Overhead"],
+            "answers": [
+            "The overhead of managing query performance and server infrastructure instead of focusing on insights.",
+            "The difficulty of accessing data from siloed systems.",
+            "The challenge of dealing with poor data quality from source systems.",
+            "The need to create data governance policies for end-users."
+            ],
+            "correct": 0,
+            "explanation": "<p><strong>Answer: A - The overhead of managing query performance and server infrastructure instead of focusing on insights</strong></p><p>This describes the operational burden of maintaining on-premises infrastructure, which can be reduced through serverless, cloud-native solutions like BigQuery.</p>",
+            "ai_generated": true,
+            "verified": true
+        },
+        {
+            "question": "A data analyst needs to join in-store sales data with promotions data to find the best-performing campaigns. The sales data is in a restricted database, and the promotions data is in a series of CSV files managed by a separate team. What is the primary data engineering challenge preventing the analyst from easily completing their task?",
+            "category": ["Data Access", "Data Integration", "Data Silos"],
+            "answers": [
+            "The compute capacity is insufficient to run the join.",
+            "The data is siloed and stored in separate systems with different formats and restricted access.",
+            "The query engine has not been patched recently.",
+            "The data warehouse is not designed for this type of query."
+            ],
+            "correct": 1,
+            "explanation": "<p><strong>Answer: B - The data is siloed and stored in separate systems with different formats and restricted access</strong></p><p>This is a classic example of siloed data making analysis difficult. Without unified access or format, joining such datasets is complex and inefficient.</p>",
+            "ai_generated": true,
             "verified": true
         }
     ]
